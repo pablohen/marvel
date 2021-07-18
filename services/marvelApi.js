@@ -6,11 +6,11 @@ const privateApiKey = process.env.MARVEL_API_PRIVATE_KEY;
 
 const marvel = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public/',
-  timeout: 3000,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    Accept: '*/*',
-  },
+  // timeout: 3000,
+  // headers: {
+  //   'Access-Control-Allow-Origin': '*',
+  //   Accept: '*/*',
+  // },
 });
 
 const date = new Date();
@@ -22,7 +22,7 @@ const getCharacters = async () => {
 
   try {
     const res = await marvel.get(
-      `characters?ts=${ts}&apikey=${publicApiKey}&hash=${hash}&orderBy=-modified`
+      `characters?ts=${ts}&apikey=${publicApiKey}&orderBy=-modified`
     );
     const { results } = await res.data.data;
     return await results;

@@ -3,8 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MainMenu from '../components/MainMenu';
 import marvelApi from '../services/marvelApi';
+import { useEffect, useState } from 'react';
 
-const Home = ({ characters }) => {
+const Home = () => {
+  const [characters, setCharacters] = useState([]);
+
+  useEffect(() => {
+    const getCharacters = async () => {
+      const charactersData = await marvelApi.getCharacters();
+      setCharacters(charactersData);
+    };
+
+    getCharacters();
+  }, []);
+
   return (
     <div className="">
       <Head>
@@ -42,12 +54,12 @@ const Home = ({ characters }) => {
   );
 };
 
-export const getServerSideProps = async () => {
-  const characters = await marvelApi.getCharacters();
+// export const getServerSideProps = async () => {
+//   const characters = await marvelApi.getCharacters();
 
-  return {
-    props: { characters },
-  };
-};
+//   return {
+//     props: { characters },
+//   };
+// };
 
 export default Home;
