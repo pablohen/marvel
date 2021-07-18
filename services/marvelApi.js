@@ -6,11 +6,11 @@ const privateApiKey = process.env.MARVEL_API_PRIVATE_KEY;
 
 const marvel = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public/',
-  // timeout: 3000,
-  // headers: {
-  //   'Access-Control-Allow-Origin': '*',
-  //   Accept: '*/*',
-  // },
+  timeout: 3000,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    Accept: '*/*',
+  },
 });
 
 const date = new Date();
