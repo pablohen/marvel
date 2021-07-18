@@ -6,8 +6,6 @@ import moment from 'moment';
 import Footer from '../../components/Footer';
 
 const CharacterPage = ({ character, comics, events, series }) => {
-  console.log(character);
-  console.log(comics);
   const { id, name, description, thumbnail, modified } = character;
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 

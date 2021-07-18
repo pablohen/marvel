@@ -5,8 +5,6 @@ import MainMenu from '../components/MainMenu';
 import marvelApi from '../services/marvelApi';
 
 const Home = ({ characters }) => {
-  console.log(characters);
-
   return (
     <div className="">
       <Head>
