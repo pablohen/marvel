@@ -8,12 +8,11 @@ const MainMenu = () => {
         <div className="">
           <Link href="/" passHref>
             <a>
-              <img
+              <Image
                 src="/logo.png"
                 alt="Marvel logo"
                 width={320}
                 height={129}
-                layout="fixed"
               />
             </a>
           </Link>
