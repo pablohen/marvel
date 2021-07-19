@@ -7,6 +7,7 @@ import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import useCharacter from '../../hooks/useCharacter';
 import useMedia from '../../hooks/useMedia';
+import { NextSeo } from 'next-seo';
 
 const CharacterPage = () => {
   const router = useRouter();
@@ -23,6 +24,24 @@ const CharacterPage = () => {
 
   return (
     <div className="space-y-4">
+      <NextSeo
+        title={name}
+        description={description}
+        openGraph={{
+          type: 'website',
+          title: name,
+          description: description,
+          images: [
+            {
+              url: `${thumbnail?.path}.${thumbnail?.extension}`,
+              width: 200,
+              height: 200,
+              alt: name,
+            },
+          ],
+        }}
+      />
+
       <MainMenu />
 
       <div className="w-full">

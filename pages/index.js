@@ -19,11 +19,6 @@ const Home = () => {
 
   return (
     <div className="">
-      <Head>
-        <title>Marvel</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <div className="space-y-4">
         <MainMenu />
 
