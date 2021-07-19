@@ -117,6 +117,42 @@ const getSerie = async (seriesId) => {
   }
 };
 
+const getComics = async () => {
+  try {
+    const res = await marvel.get('comics', {
+      params: { ts, apikey, orderBy },
+    });
+    const { results } = await res.data.data;
+    return await results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getEvents = async () => {
+  try {
+    const res = await marvel.get('events', {
+      params: { ts, apikey, orderBy },
+    });
+    const { results } = await res.data.data;
+    return await results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getSeries = async () => {
+  try {
+    const res = await marvel.get('series', {
+      params: { ts, apikey, orderBy },
+    });
+    const { results } = await res.data.data;
+    return await results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const marvelApi = {
   getCharacters,
   getCharacter,
@@ -126,6 +162,9 @@ const marvelApi = {
   getComic,
   getEvent,
   getSerie,
+  getComics,
+  getEvents,
+  getSeries,
 };
 
 export default marvelApi;
