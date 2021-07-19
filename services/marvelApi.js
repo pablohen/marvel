@@ -81,12 +81,51 @@ const getCharacterSeries = async (characterId) => {
   }
 };
 
+const getComic = async (comicId) => {
+  try {
+    const res = await marvel.get(`comics/${comicId}`, {
+      params: { ts, apikey },
+    });
+    const { results } = await res.data.data;
+    return await results[0];
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getEvent = async (eventId) => {
+  try {
+    const res = await marvel.get(`events/${eventId}`, {
+      params: { ts, apikey },
+    });
+    const { results } = await res.data.data;
+    return await results[0];
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getSerie = async (seriesId) => {
+  try {
+    const res = await marvel.get(`series/${seriesId}`, {
+      params: { ts, apikey },
+    });
+    const { results } = await res.data.data;
+    return await results[0];
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const marvelApi = {
   getCharacters,
   getCharacter,
   getCharacterComics,
   getCharacterEvents,
   getCharacterSeries,
+  getComic,
+  getEvent,
+  getSerie,
 };
 
 export default marvelApi;
