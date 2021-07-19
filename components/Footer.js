@@ -10,7 +10,6 @@ const Footer = () => {
           <a
             href="https://developer.marvel.com"
             className="font-bold underline"
-            noferreral
           >
             Marvel Api
           </a>
