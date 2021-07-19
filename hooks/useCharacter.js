@@ -1,20 +1,20 @@
 import { useEffect, useState } from 'react';
 import marvelApi from '../services/marvelApi';
 
-const useCharacter = (characterId) => {
+const useCharacter = (id) => {
   const [character, setCharacter] = useState({});
   const [loadingCharacter, setLoadingCharacter] = useState(true);
 
   useEffect(() => {
-    if (characterId) {
+    if (id) {
       const getCharacter = async () => {
-        const characterData = await marvelApi.getCharacter(characterId);
+        const characterData = await marvelApi.getCharacter(id);
         setCharacter(characterData);
         setLoadingCharacter(false);
       };
       getCharacter();
     }
-  }, [characterId]);
+  }, [id]);
 
   return [character, setCharacter, loadingCharacter];
 };

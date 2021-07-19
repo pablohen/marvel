@@ -62,7 +62,7 @@ const SeriePage = () => {
               Last updated: {modifiedDate}
             </p>
 
-            {characters && (
+            {characters?.items?.[0] && (
               <>
                 <h4 className="text-3xl font-bold">Characters</h4>
                 <ul>
