@@ -3,6 +3,7 @@ import md5 from 'md5';
 
 const publicApiKey = '59248caba3c4b7a1eb4d7dd379c827bd';
 const privateApiKey = process.env.MARVEL_API_PRIVATE_KEY;
+const apikey = publicApiKey;
 
 const marvel = axios.create({
   baseURL: 'https://gateway.marvel.com/v1/public/',
@@ -14,16 +15,17 @@ const marvel = axios.create({
 });
 
 const date = new Date();
-const ts = date.getMilliseconds();
+const ts = date.toISOString();
 const hash = md5(ts + privateApiKey + publicApiKey);
+const orderBy = '-modified';
 
 const getCharacters = async () => {
-  // console.log(`characters?ts=${ts}&apikey=${publicApiKey}&hash=${hash}`);
+  // console.log(`characters?ts=${ts}&apikey=${publicApiKey}&hash=${hash}&orderBy=-modified`);
 
   try {
-    const res = await marvel.get(
-      `characters?ts=${ts}&apikey=${publicApiKey}&orderBy=-modified`
-    );
+    const res = await marvel.get('characters', {
+      params: { ts, apikey, orderBy },
+    });
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
@@ -33,9 +35,9 @@ const getCharacters = async () => {
 
 const getCharacter = async (name) => {
   try {
-    const res = await marvel.get(
-      `characters?name=${name}&ts=${ts}&apikey=${publicApiKey}&hash=${hash}`
-    );
+    const res = await marvel.get('characters', {
+      params: { ts, apikey, name },
+    });
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
@@ -45,9 +47,9 @@ const getCharacter = async (name) => {
 
 const getCharacterComics = async (characterId) => {
   try {
-    const res = await marvel.get(
-      `characters/${characterId}/comics?ts=${ts}&apikey=${publicApiKey}&hash=${hash}`
-    );
+    const res = await marvel.get(`characters/${characterId}/comics`, {
+      params: { ts, apikey },
+    });
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
@@ -57,9 +59,9 @@ const getCharacterComics = async (characterId) => {
 
 const getCharacterEvents = async (characterId) => {
   try {
-    const res = await marvel.get(
-      `characters/${characterId}/events?ts=${ts}&apikey=${publicApiKey}&hash=${hash}`
-    );
+    const res = await marvel.get(`characters/${characterId}/events`, {
+      params: { ts, apikey },
+    });
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
@@ -69,21 +71,9 @@ const getCharacterEvents = async (characterId) => {
 
 const getCharacterSeries = async (characterId) => {
   try {
-    const res = await marvel.get(
-      `characters/${characterId}/series?ts=${ts}&apikey=${publicApiKey}&hash=${hash}`
-    );
-    const { results } = await res.data.data;
-    return await results;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const getCharacterStories = async (characterId) => {
-  try {
-    const res = await marvel.get(
-      `characters/${characterId}/stories?ts=${ts}&apikey=${publicApiKey}&hash=${hash}`
-    );
+    const res = await marvel.get(`characters/${characterId}/series`, {
+      params: { ts, apikey },
+    });
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
@@ -97,7 +87,6 @@ const marvelApi = {
   getCharacterComics,
   getCharacterEvents,
   getCharacterSeries,
-  getCharacterStories,
 };
 
 export default marvelApi;
