@@ -8,17 +8,27 @@ import { useRouter } from 'next/router';
 import useCharacter from '../../hooks/useCharacter';
 import useMedia from '../../hooks/useMedia';
 import { NextSeo } from 'next-seo';
+import CustomLoader from '../../components/CustomLoader';
 
 const CharacterPage = () => {
   const router = useRouter();
   const { characterId } = router.query;
-  const [character] = useCharacter(characterId);
+  const [character, setCharacter, loading] = useCharacter(characterId);
 
   const { id, name, description, thumbnail, modified } = character;
 
-  const [comics] = useMedia(id, marvelApi.getCharacterComics);
-  const [events] = useMedia(id, marvelApi.getCharacterEvents);
-  const [series] = useMedia(id, marvelApi.getCharacterSeries);
+  const [comics, setComics, loadingComics] = useMedia(
+    id,
+    marvelApi.getCharacterComics
+  );
+  const [events, setEvents, loadingEvents] = useMedia(
+    id,
+    marvelApi.getCharacterEvents
+  );
+  const [series, setSeries, loadingSeries] = useMedia(
+    id,
+    marvelApi.getCharacterSeries
+  );
 
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 
@@ -46,6 +56,8 @@ const CharacterPage = () => {
 
       <div className="w-full">
         <div className="flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 mx-4">
+          {loading && <CustomLoader text="Loading" />}
+
           {thumbnail && (
             <div className="w-full">
               <Image
@@ -69,8 +81,13 @@ const CharacterPage = () => {
       </div>
 
       <div className="bg-gray-900 text-white pt-4">
+        {loadingComics && <CustomLoader text="Loading comics..." />}
         {comics && <Showcase category="Comics" data={comics} />}
+
+        {loadingEvents && <CustomLoader text="Loading events..." />}
         {events && <Showcase category="Events" data={events} />}
+
+        {loadingSeries && <CustomLoader text="Loading series..." />}
         {series && <Showcase category="Series" data={series} />}
       </div>
       <Footer />
