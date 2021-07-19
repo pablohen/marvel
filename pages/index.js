@@ -1,21 +1,16 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import MainMenu from '../components/MainMenu';
 import marvelApi from '../services/marvelApi';
-import { useEffect, useState } from 'react';
+import useMedia from '../hooks/useMedia';
+import CustomLoader from '../components/CustomLoader';
+import Footer from '../components/Footer';
 
 const Home = () => {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    const getCharacters = async () => {
-      const charactersData = await marvelApi.getCharacters();
-      setCharacters(charactersData);
-    };
-
-    getCharacters();
-  }, []);
+  const [characters, setCharacters, loading] = useMedia(
+    true,
+    marvelApi.getCharacters
+  );
 
   return (
     <div className="">
@@ -25,6 +20,8 @@ const Home = () => {
         <h1 className="text-center font-bold text-3xl">Characters</h1>
 
         <div className="flex flex-wrap justify-center mx-4">
+          {loading && <CustomLoader text="Loading" />}
+
           {characters.map(({ id, name, description, thumbnail }) => (
             <Link href={`/characters/${name}`} passHref key={id}>
               <a>
@@ -44,6 +41,7 @@ const Home = () => {
             </Link>
           ))}
         </div>
+        <Footer />
       </div>
     </div>
   );
