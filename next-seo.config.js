@@ -12,6 +12,14 @@ const nextSeo = {
     locale: 'en-US',
     site_name: siteName,
     description,
+    images: [
+      {
+        url: `${site}/logo.png`,
+        width: 320,
+        height: 129,
+        alt: 'Marvel logo',
+      },
+    ],
   },
 };
 
