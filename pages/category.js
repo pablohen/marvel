@@ -3,7 +3,7 @@ import marvelApi from '../services/marvelApi';
 import Footer from '../components/Footer';
 import ItemsTemplate from '../components/ItemsTemplate';
 
-const SeriesPage = () => {
+const CharactersPage = () => {
   const category = 'Series';
 
   return (
@@ -17,4 +17,12 @@ const SeriesPage = () => {
   );
 };
 
-export default SeriesPage;
+// export const getServerSideProps = async () => {
+//   const characters = await marvelApi.getCharacters();
+
+//   return {
+//     props: { characters },
+//   };
+// };
+
+export default CharactersPage;

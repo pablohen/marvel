@@ -1,19 +1,19 @@
-import MainMenu from '../../components/MainMenu';
 import Image from 'next/image';
 import moment from 'moment';
-import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
-import CustomLoader from '../../components/CustomLoader';
-import useSerie from '../../hooks/useSerie';
 import Link from 'next/link';
+import MainMenu from './MainMenu';
+import Footer from './Footer';
+import CustomLoader from './CustomLoader';
+import useItem from '../hooks/useItem';
 
-const SeriePage = () => {
+const ItemTemplate = ({ api }) => {
   const router = useRouter();
-  const { seriesId } = router.query;
-  const [series, setSerie, loading] = useSerie(seriesId);
+  const { itemId } = router.query;
+  const [item, setItem, loading] = useItem(itemId, api);
 
-  const { id, title, description, thumbnail, modified, characters } = series;
+  const { id, title, description, thumbnail, modified, characters } = item;
 
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 
@@ -47,7 +47,7 @@ const SeriePage = () => {
             <div className="w-full">
               <Image
                 src={`${thumbnail.path}.${thumbnail.extension}`}
-                alt={name}
+                alt={title}
                 width={200}
                 height={200}
                 layout="responsive"
@@ -59,7 +59,7 @@ const SeriePage = () => {
             <h3 className="text-4xl font-bold">{title}</h3>
             <p>{description}</p>
             <p className="text-sm text-gray-500">
-              Last updated: {modifiedDate}
+              <span className="font-bold">Last updated:</span> {modifiedDate}
             </p>
 
             {characters?.items?.[0] && (
@@ -84,4 +84,4 @@ const SeriePage = () => {
   );
 };
 
-export default SeriePage;
+export default ItemTemplate;

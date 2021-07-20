@@ -6,7 +6,7 @@ import moment from 'moment';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import useCharacter from '../../hooks/useCharacter';
-import useMedia from '../../hooks/useMedia';
+import useItems from '../../hooks/useItems';
 import { NextSeo } from 'next-seo';
 import CustomLoader from '../../components/CustomLoader';
 
@@ -17,15 +17,15 @@ const CharacterPage = () => {
 
   const { id, name, description, thumbnail, modified } = character;
 
-  const [comics, setComics, loadingComics] = useMedia(
+  const [comics, setComics, loadingComics] = useItems(
     id,
     marvelApi.getCharacterComics
   );
-  const [events, setEvents, loadingEvents] = useMedia(
+  const [events, setEvents, loadingEvents] = useItems(
     id,
     marvelApi.getCharacterEvents
   );
-  const [series, setSeries, loadingSeries] = useMedia(
+  const [series, setSeries, loadingSeries] = useItems(
     id,
     marvelApi.getCharacterSeries
   );
@@ -74,7 +74,7 @@ const CharacterPage = () => {
             <h3 className="text-4xl font-bold">{name}</h3>
             <p>{description}</p>
             <p className="text-sm text-gray-500">
-              Last updated: {modifiedDate}
+              <span className="font-bold">Last updated:</span> {modifiedDate}
             </p>
           </div>
         </div>

@@ -18,16 +18,60 @@ const date = new Date();
 const ts = date.toISOString();
 const hash = md5(ts + privateApiKey + publicApiKey);
 const orderBy = '-modified';
+const limit = 20;
 
-const getCharacters = async () => {
+const getCharacters = async (id, page = 1) => {
   // console.log(`characters?ts=${ts}&apikey=${publicApiKey}&hash=${hash}&orderBy=-modified`);
+  const offset = page ? (Number(page) - 1) * limit : 0;
 
   try {
     const res = await marvel.get('characters', {
-      params: { ts, apikey, orderBy },
+      params: { ts, apikey, orderBy, offset },
     });
-    const { results } = await res.data.data;
-    return await results;
+    const apiRes = await res.data.data;
+    return await apiRes;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getComics = async (id, page = 1) => {
+  const offset = page ? (Number(page) - 1) * limit : 0;
+
+  try {
+    const res = await marvel.get('comics', {
+      params: { ts, apikey, orderBy, offset },
+    });
+    const apiRes = await res.data.data;
+    return await apiRes;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getEvents = async (id, page = 1) => {
+  const offset = page ? (Number(page) - 1) * limit : 0;
+
+  try {
+    const res = await marvel.get('events', {
+      params: { ts, apikey, orderBy, offset },
+    });
+    const apiRes = await res.data.data;
+    return await apiRes;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const getSeries = async (id, page = 1) => {
+  const offset = page ? (Number(page) - 1) * limit : 0;
+
+  try {
+    const res = await marvel.get('series', {
+      params: { ts, apikey, orderBy, offset },
+    });
+    const apiRes = await res.data.data;
+    return await apiRes;
   } catch (error) {
     console.log(error.message);
   }
@@ -117,44 +161,11 @@ const getSerie = async (seriesId) => {
   }
 };
 
-const getComics = async () => {
-  try {
-    const res = await marvel.get('comics', {
-      params: { ts, apikey, orderBy },
-    });
-    const { results } = await res.data.data;
-    return await results;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const getEvents = async () => {
-  try {
-    const res = await marvel.get('events', {
-      params: { ts, apikey, orderBy },
-    });
-    const { results } = await res.data.data;
-    return await results;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-const getSeries = async () => {
-  try {
-    const res = await marvel.get('series', {
-      params: { ts, apikey, orderBy },
-    });
-    const { results } = await res.data.data;
-    return await results;
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
 const marvelApi = {
   getCharacters,
+  getComics,
+  getEvents,
+  getSeries,
   getCharacter,
   getCharacterComics,
   getCharacterEvents,
@@ -162,9 +173,6 @@ const marvelApi = {
   getComic,
   getEvent,
   getSerie,
-  getComics,
-  getEvents,
-  getSeries,
 };
 
 export default marvelApi;
