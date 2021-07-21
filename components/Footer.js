@@ -3,7 +3,7 @@ const Footer = () => {
   const year = date.getFullYear();
 
   return (
-    <footer className="bg-red-500">
+    <footer className="bg-marvel-red">
       <div className="flex flex-col text-center text-white py-8">
         <span>
           Data provided by{' '}
@@ -11,7 +11,7 @@ const Footer = () => {
             href="https://developer.marvel.com"
             className="font-bold underline"
           >
-            Marvel Api
+            Marvel API
           </a>
         </span>
         <span>@{year}</span>

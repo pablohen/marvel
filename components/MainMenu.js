@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const MainMenu = () => {
   return (
-    <div className="w-full border-b shadow-lg bg-red-500">
+    <div className="w-full border-b shadow-lg bg-marvel-red">
       <div className="flex flex-col md:flex-row justify-between items-center">
         <div className="w-20 m-4">
           <Link href="/" passHref>
@@ -23,35 +23,35 @@ const MainMenu = () => {
           <ul className="flex flex-col md:flex-row  space-x-0 md:space-x-2 space-y-4 md:space-y-0 text-center">
             <li className="py-4">
               <Link href="/" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-red-500">
+                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
                   Home
                 </a>
               </Link>
             </li>
             <li className="py-4">
               <Link href="/characters" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-red-500">
+                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
                   Characters
                 </a>
               </Link>
             </li>
             <li className="py-4">
               <Link href="/comics" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-red-500">
+                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
                   Comics
                 </a>
               </Link>
             </li>
             <li className="py-4">
               <Link href="/events" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-red-500">
+                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
                   Events
                 </a>
               </Link>
             </li>
             <li className="py-4">
               <Link href="/series" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-red-500">
+                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
                   Series
                 </a>
               </Link>
