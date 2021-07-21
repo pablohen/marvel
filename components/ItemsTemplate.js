@@ -9,6 +9,7 @@ import { NextSeo } from 'next-seo';
 const ItemsTemplate = ({ category, api }) => {
   const [page, setPage] = useState(1);
   const [items, setItems, loading] = useItems(true, api, page);
+  const { total, limit } = items;
 
   const changePage = (e, newPage) => {
     setPage(newPage);
@@ -37,6 +38,7 @@ const ItemsTemplate = ({ category, api }) => {
                   width={200}
                   height={200}
                   layout="responsive"
+                  objectFit="contain"
                 />
                 <span className="p-2 font-bold text-white text-right bg-black bg-opacity-50 absolute bottom-0 left-0 right-0">
                   {name || title}
@@ -49,8 +51,10 @@ const ItemsTemplate = ({ category, api }) => {
 
       <div className="flex justify-center">
         <Pagination
-          count={Math.ceil(items.total / items.count)}
+          count={items ? Math.ceil(total / limit) : 1}
           onChange={changePage}
+          showFirstButton
+          showLastButton
         />
       </div>
     </div>
