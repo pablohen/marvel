@@ -59,7 +59,7 @@ const CharacterPage = () => {
           {loading && <CustomLoader text="Loading" />}
 
           {thumbnail && (
-            <div className="w-full">
+            <div className="w-full lg:w-5/12">
               <Image
                 src={`${thumbnail.path}.${thumbnail.extension}`}
                 alt={name}
@@ -70,9 +70,9 @@ const CharacterPage = () => {
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className="lg:w-full space-y-4">
             <h3 className="text-4xl font-bold">{name}</h3>
-            <p>{description}</p>
+            <p className="text-gray-800">{description}</p>
             <p className="text-sm text-gray-500">
               <span className="font-bold">Last updated:</span> {modifiedDate}
             </p>
@@ -81,14 +81,14 @@ const CharacterPage = () => {
       </div>
 
       <div className="bg-gray-900 text-white pt-4">
-        {loadingComics && <CustomLoader text="Loading comics..." />}
         {comics && <Showcase category="Comics" data={comics} />}
+        {loadingComics && <CustomLoader text="Loading comics..." />}
 
-        {loadingEvents && <CustomLoader text="Loading events..." />}
         {events && <Showcase category="Events" data={events} />}
+        {loadingEvents && <CustomLoader text="Loading events..." />}
 
-        {loadingSeries && <CustomLoader text="Loading series..." />}
         {series && <Showcase category="Series" data={series} />}
+        {loadingSeries && <CustomLoader text="Loading series..." />}
       </div>
       <Footer />
     </div>

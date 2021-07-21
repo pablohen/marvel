@@ -44,18 +44,19 @@ const ItemTemplate = ({ api }) => {
           {loading && <CustomLoader text="Loading" />}
 
           {thumbnail && (
-            <div className="w-full">
+            <div className="w-full lg:w-5/12">
               <Image
                 src={`${thumbnail.path}.${thumbnail.extension}`}
                 alt={title}
                 width={200}
                 height={200}
                 layout="responsive"
+                objectFit="contain"
               />
             </div>
           )}
 
-          <div className="space-y-4">
+          <div className="lg:w-full space-y-4">
             <h3 className="text-4xl font-bold">{title}</h3>
             <p>{description}</p>
             <p className="text-sm text-gray-500">
