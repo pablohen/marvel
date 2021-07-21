@@ -19,13 +19,13 @@ const Showcase = ({ category, data }) => {
                         src={`${thumbnail.path}.${thumbnail.extension}`}
                         alt={title}
                         width={200}
-                        height={300}
+                        height={200}
                         layout="responsive"
                         objectFit="contain"
                       />
                     </div>
                   )}
-                  <span className="p-2 text-sm font-bold text-white text-right bg-black bg-opacity-50 absolute bottom-0 left-0 right-0">
+                  <span className="p-2 pt-8 text-sm font-bold text-white text-right bg-gradient-to-b from-transparent to-black absolute bottom-0 left-0 right-0">
                     {title}
                   </span>
                 </div>

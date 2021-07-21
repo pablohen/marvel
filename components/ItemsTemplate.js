@@ -40,7 +40,7 @@ const ItemsTemplate = ({ category, api }) => {
                   layout="responsive"
                   objectFit="contain"
                 />
-                <span className="p-2 font-bold text-white text-right bg-black bg-opacity-50 absolute bottom-0 left-0 right-0">
+                <span className="p-2 pt-8 font-bold text-white text-right bg-gradient-to-b from-transparent to-black absolute bottom-0 left-0 right-0">
                   {name || title}
                 </span>
               </div>
