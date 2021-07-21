@@ -18,10 +18,10 @@ const Showcase = ({ category, data }) => {
                       <Image
                         src={`${thumbnail.path}.${thumbnail.extension}`}
                         alt={title}
-                        className=""
-                        layout="responsive"
                         width={200}
                         height={300}
+                        layout="responsive"
+                        objectFit="contain"
                       />
                     </div>
                   )}
