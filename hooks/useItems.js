@@ -16,7 +16,7 @@ const useItems = (id, apiQuery, page) => {
     }
   }, [id, page]);
 
-  return [items, setItems, loadingItems];
+  return [items, setItems, loadingItems, setLoadingItems];
 };
 
 export default useItems;
