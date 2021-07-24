@@ -33,7 +33,7 @@ const ItemsTemplate = ({ category, api }) => {
               key={id}
             >
               <a>
-                <div className="w-32 md:w-48 relative">
+                <div className="w-32 md:w-48 bg-black relative">
                   <Image
                     src={`${thumbnail.path}.${thumbnail.extension}`}
                     alt={name}
