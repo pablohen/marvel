@@ -1,22 +1,10 @@
-import { useEffect, useState } from 'react';
 import marvelApi from '../services/marvelApi';
+import useSWR from 'swr';
 
 const useCharacter = (id) => {
-  const [character, setCharacter] = useState({});
-  const [loadingCharacter, setLoadingCharacter] = useState(true);
+  const { data, error } = useSWR(id, marvelApi.getCharacter);
 
-  useEffect(() => {
-    if (id) {
-      const getCharacter = async () => {
-        const characterData = await marvelApi.getCharacter(id);
-        setCharacter(characterData);
-        setLoadingCharacter(false);
-      };
-      getCharacter();
-    }
-  }, [id]);
-
-  return [character, setCharacter, loadingCharacter];
+  return [data, !data && !error];
 };
 
 export default useCharacter;

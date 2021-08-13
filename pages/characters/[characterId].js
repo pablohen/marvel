@@ -13,9 +13,9 @@ import CustomLoader from '../../components/CustomLoader';
 const CharacterPage = () => {
   const router = useRouter();
   const { characterId } = router.query;
-  const [character, setCharacter, loading] = useCharacter(characterId);
+  const [character, loading] = useCharacter(characterId);
 
-  const { id, name, description, thumbnail, modified } = character;
+  const { id, name, description, thumbnail, modified } = character || {};
 
   const [comics, setComics, loadingComics] = useItems(
     id,
