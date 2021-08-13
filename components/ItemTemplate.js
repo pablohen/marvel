@@ -11,9 +11,10 @@ import useItem from '../hooks/useItem';
 const ItemTemplate = ({ api }) => {
   const router = useRouter();
   const { itemId } = router.query;
-  const [item, setItem, loading] = useItem(itemId, api);
+  const [item, loading] = useItem(itemId, api);
 
-  const { id, title, description, thumbnail, modified, characters } = item;
+  const { id, title, description, thumbnail, modified, characters } =
+    item || {};
 
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 

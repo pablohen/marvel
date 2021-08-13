@@ -17,18 +17,9 @@ const CharacterPage = () => {
 
   const { id, name, description, thumbnail, modified } = character || {};
 
-  const [comics, setComics, loadingComics] = useItems(
-    id,
-    marvelApi.getCharacterComics
-  );
-  const [events, setEvents, loadingEvents] = useItems(
-    id,
-    marvelApi.getCharacterEvents
-  );
-  const [series, setSeries, loadingSeries] = useItems(
-    id,
-    marvelApi.getCharacterSeries
-  );
+  const [comics, loadingComics] = useItems(id, marvelApi.getCharacterComics);
+  const [events, loadingEvents] = useItems(id, marvelApi.getCharacterEvents);
+  const [series, loadingSeries] = useItems(id, marvelApi.getCharacterSeries);
 
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 
