@@ -4,7 +4,7 @@ import useSWR from 'swr';
 const useCharacter = (id) => {
   const { data, error } = useSWR(id, marvelApi.getCharacter);
 
-  return [data, !data && !error];
+  return [data, !data && !error, error];
 };
 
 export default useCharacter;
