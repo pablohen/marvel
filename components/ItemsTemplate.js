@@ -57,6 +57,7 @@ const ItemsTemplate = ({ category, api }) => {
             onChange={changePage}
             showFirstButton
             showLastButton
+            page={page || 1}
           />
         </div>
       )}
