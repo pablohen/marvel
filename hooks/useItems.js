@@ -1,22 +1,9 @@
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
 
 const useItems = (id, apiQuery, page) => {
-  const [items, setItems] = useState([]);
-  const [loadingItems, setLoadingItems] = useState(true);
+  const { data, error } = useSWR([id, page], apiQuery);
 
-  useEffect(() => {
-    if (id) {
-      const getItems = async () => {
-        const itemsData = await apiQuery(id, page);
-        setItems(itemsData);
-        setLoadingItems(false);
-      };
-
-      getItems();
-    }
-  }, [id, page]);
-
-  return [items, setItems, loadingItems, setLoadingItems];
+  return [data, !data && !error];
 };
 
 export default useItems;
