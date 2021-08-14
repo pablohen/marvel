@@ -40,6 +40,7 @@ const ItemsTemplate = ({ category, api }) => {
                     height={200}
                     layout="responsive"
                     objectFit="contain"
+                    className="transform transition-all duration-200 ease-in-out hover:scale-110"
                   />
                   <span className="p-2 pt-8 font-bold text-white text-right bg-gradient-to-b from-transparent to-black absolute bottom-0 left-0 right-0">
                     {name || title}

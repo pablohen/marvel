@@ -12,7 +12,7 @@ const Showcase = ({ category, data }) => {
           {data.map(({ id, title, thumbnail }) => (
             <Link href={`/${categoryUrl}/${id}`} passHref key={id}>
               <a>
-                <div className="flex flex-col relative">
+                <div className="flex flex-col relative ">
                   {thumbnail && (
                     <div className="w-48">
                       <Image
@@ -22,6 +22,7 @@ const Showcase = ({ category, data }) => {
                         height={200}
                         layout="responsive"
                         objectFit="contain"
+                        className="transform transition-all duration-300 ease-in-out hover:scale-150"
                       />
                     </div>
                   )}
