@@ -6,9 +6,9 @@ import moment from 'moment';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import useCharacter from '../../hooks/useCharacter';
-import useItems from '../../hooks/useItems';
 import { NextSeo } from 'next-seo';
 import CustomLoader from '../../components/CustomLoader';
+import useCharacterMedias from '../../hooks/useCharacterMedias';
 
 const CharacterPage = () => {
   const router = useRouter();
@@ -17,9 +17,21 @@ const CharacterPage = () => {
 
   const { id, name, description, thumbnail, modified } = character || {};
 
-  const [comics, loadingComics] = useItems(id, marvelApi.getCharacterComics);
-  const [events, loadingEvents] = useItems(id, marvelApi.getCharacterEvents);
-  const [series, loadingSeries] = useItems(id, marvelApi.getCharacterSeries);
+  const [comics, loadingComics] = useCharacterMedias(
+    id,
+    'comics',
+    marvelApi.getCharacterMedias
+  );
+  const [events, loadingEvents] = useCharacterMedias(
+    id,
+    'events',
+    marvelApi.getCharacterMedias
+  );
+  const [series, loadingSeries] = useCharacterMedias(
+    id,
+    'series',
+    marvelApi.getCharacterMedias
+  );
 
   const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
 

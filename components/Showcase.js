@@ -5,7 +5,7 @@ const Showcase = ({ category, data }) => {
   const categoryUrl = category.toLowerCase();
   return (
     <section className="space-y-4 pb-4">
-      <span className="text-3xl mx-4">{category}</span>
+      <span className="text-3xl mx-4">{`${category} (${data.length})`}</span>
 
       <div className="overflow-x-auto">
         <div className="flex space-x-2">

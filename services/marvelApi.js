@@ -77,6 +77,20 @@ const getSeries = async (id, page = 1) => {
   }
 };
 
+const getMedias = async (mediaType, page = 1) => {
+  const offset = page ? (Number(page) - 1) * limit : 0;
+
+  try {
+    const res = await marvel.get(`${mediaType}`, {
+      params: { ts, apikey, orderBy, offset },
+    });
+    const apiRes = await res.data.data;
+    return await apiRes;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const getCharacter = async (name) => {
   try {
     const res = await marvel.get('characters', {
@@ -125,6 +139,18 @@ const getCharacterSeries = async (characterId) => {
   }
 };
 
+const getCharacterMedias = async (characterId, mediaType) => {
+  try {
+    const res = await marvel.get(`characters/${characterId}/${mediaType}`, {
+      params: { ts, apikey },
+    });
+    const { results } = await res.data.data;
+    return await results;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const getComic = async (comicId) => {
   try {
     const res = await marvel.get(`comics/${comicId}`, {
@@ -161,6 +187,18 @@ const getSerie = async (seriesId) => {
   }
 };
 
+const getMedia = async (mediaType, mediaId) => {
+  try {
+    const res = await marvel.get(`${mediaType}/${mediaId}`, {
+      params: { ts, apikey },
+    });
+    const { results } = await res.data.data;
+    return await results[0];
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 const marvelApi = {
   getCharacters,
   getComics,
@@ -170,9 +208,12 @@ const marvelApi = {
   getCharacterComics,
   getCharacterEvents,
   getCharacterSeries,
+  getCharacterMedias,
   getComic,
   getEvent,
   getSerie,
+  getMedias,
+  getMedia,
 };
 
 export default marvelApi;

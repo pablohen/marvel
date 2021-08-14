@@ -3,12 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Pagination from '@material-ui/lab/Pagination';
 import { useState } from 'react';
-import useItems from '../hooks/useItems';
 import { NextSeo } from 'next-seo';
+import useMediasPaginated from '../hooks/useMediasPaginated';
 
 const ItemsTemplate = ({ category, api }) => {
   const [page, setPage] = useState(1);
-  const [items, loading] = useItems(true, api, page);
+  const [items, loading] = useMediasPaginated(category, page, api);
   const { total, limit } = items || {};
 
   const changePage = (e, newPage) => {
