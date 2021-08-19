@@ -1,6 +1,6 @@
 # Marvel API
 
-## Front-end
+## Front-end:
 
 - JavaScript
 - React
@@ -13,7 +13,7 @@
 - React Loader Spinner
 - SWR
 
-## Back-end
+## Back-end:
 
 - [Marvel API](https://developer.marvel.com)
 
