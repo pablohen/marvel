@@ -8,7 +8,6 @@
 - Next-SEO
 - Material-UI
 - Tailwind CSS
-- Heroicons
 - Axios
 - React Loader Spinner
 - SWR
