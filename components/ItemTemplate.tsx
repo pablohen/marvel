@@ -19,7 +19,7 @@ interface CharacterInfo {
 const ItemTemplate = ({ api }: Props) => {
   const router = useRouter();
   const { itemId } = router.query;
-  const [item, loading] = useItem(itemId, api);
+  const [item, loading] = useItem(String(itemId), api);
 
   const { id, title, description, thumbnail, modified, characters } =
     item || {};
