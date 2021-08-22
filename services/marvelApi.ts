@@ -20,7 +20,7 @@ const hash = md5(ts + privateApiKey + publicApiKey);
 const orderBy = '-modified';
 const limit = 20;
 
-const getCharacters = async (id, page = 1) => {
+const getCharacters = async (id: string, page: number = 1) => {
   // console.log(`characters?ts=${ts}&apikey=${publicApiKey}&hash=${hash}&orderBy=-modified`);
   const offset = page ? (Number(page) - 1) * limit : 0;
 
@@ -35,7 +35,7 @@ const getCharacters = async (id, page = 1) => {
   }
 };
 
-const getComics = async (id, page = 1) => {
+const getComics = async (id: string, page = 1) => {
   const offset = page ? (Number(page) - 1) * limit : 0;
 
   try {
@@ -49,7 +49,7 @@ const getComics = async (id, page = 1) => {
   }
 };
 
-const getEvents = async (id, page = 1) => {
+const getEvents = async (id: string, page = 1) => {
   const offset = page ? (Number(page) - 1) * limit : 0;
 
   try {
@@ -63,7 +63,7 @@ const getEvents = async (id, page = 1) => {
   }
 };
 
-const getSeries = async (id, page = 1) => {
+const getSeries = async (id: string, page = 1) => {
   const offset = page ? (Number(page) - 1) * limit : 0;
 
   try {
@@ -77,7 +77,7 @@ const getSeries = async (id, page = 1) => {
   }
 };
 
-const getMedias = async (mediaType, page = 1) => {
+const getMedias = async (mediaType: string, page = 1) => {
   const offset = page ? (Number(page) - 1) * limit : 0;
 
   try {
@@ -91,7 +91,7 @@ const getMedias = async (mediaType, page = 1) => {
   }
 };
 
-const getCharacter = async (name) => {
+const getCharacter = async (name: string) => {
   try {
     const res = await marvel.get('characters', {
       params: { ts, apikey, name },
@@ -103,7 +103,7 @@ const getCharacter = async (name) => {
   }
 };
 
-const getCharacterComics = async (characterId) => {
+const getCharacterComics = async (characterId: string) => {
   try {
     const res = await marvel.get(`characters/${characterId}/comics`, {
       params: { ts, apikey },
@@ -115,7 +115,7 @@ const getCharacterComics = async (characterId) => {
   }
 };
 
-const getCharacterEvents = async (characterId) => {
+const getCharacterEvents = async (characterId: string) => {
   try {
     const res = await marvel.get(`characters/${characterId}/events`, {
       params: { ts, apikey },
@@ -127,7 +127,7 @@ const getCharacterEvents = async (characterId) => {
   }
 };
 
-const getCharacterSeries = async (characterId) => {
+const getCharacterSeries = async (characterId: string) => {
   try {
     const res = await marvel.get(`characters/${characterId}/series`, {
       params: { ts, apikey },
@@ -139,7 +139,7 @@ const getCharacterSeries = async (characterId) => {
   }
 };
 
-const getCharacterMedias = async (characterId, mediaType) => {
+const getCharacterMedias = async (characterId: string, mediaType: string) => {
   try {
     const res = await marvel.get(`characters/${characterId}/${mediaType}`, {
       params: { ts, apikey },
@@ -151,7 +151,7 @@ const getCharacterMedias = async (characterId, mediaType) => {
   }
 };
 
-const getComic = async (comicId) => {
+const getComic = async (comicId: string) => {
   try {
     const res = await marvel.get(`comics/${comicId}`, {
       params: { ts, apikey },
@@ -163,7 +163,7 @@ const getComic = async (comicId) => {
   }
 };
 
-const getEvent = async (eventId) => {
+const getEvent = async (eventId: string) => {
   try {
     const res = await marvel.get(`events/${eventId}`, {
       params: { ts, apikey },
@@ -175,7 +175,7 @@ const getEvent = async (eventId) => {
   }
 };
 
-const getSerie = async (seriesId) => {
+const getSerie = async (seriesId: string) => {
   try {
     const res = await marvel.get(`series/${seriesId}`, {
       params: { ts, apikey },
@@ -187,7 +187,7 @@ const getSerie = async (seriesId) => {
   }
 };
 
-const getMedia = async (mediaType, mediaId) => {
+const getMedia = async (mediaType: string, mediaId: string) => {
   try {
     const res = await marvel.get(`${mediaType}/${mediaId}`, {
       params: { ts, apikey },
