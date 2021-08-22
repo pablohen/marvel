@@ -13,7 +13,7 @@ import useCharacterMedias from '../../hooks/useCharacterMedias';
 const CharacterPage = () => {
   const router = useRouter();
   const { characterId } = router.query;
-  const [character, loading] = useCharacter(characterId);
+  const [character, loading] = useCharacter(String(characterId));
 
   const { id, name, description, thumbnail, modified } = character || {};
 
