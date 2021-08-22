@@ -1,7 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Thumbnail from '../interfaces/Thumbnail';
 
-const Showcase = ({ category, data }) => {
+interface Info {
+  id: string;
+  title: string;
+  thumbnail: Thumbnail;
+}
+interface Props {
+  category: string;
+  data: Info[];
+}
+
+const Showcase = ({ category, data }: Props) => {
   const categoryUrl = category.toLowerCase();
   return (
     <section className="space-y-4 pb-4">

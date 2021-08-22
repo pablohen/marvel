@@ -2,16 +2,29 @@ import CustomLoader from './CustomLoader';
 import Link from 'next/link';
 import Image from 'next/image';
 import Pagination from '@material-ui/lab/Pagination';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { NextSeo } from 'next-seo';
 import useMediasPaginated from '../hooks/useMediasPaginated';
+import Thumbnail from '../interfaces/Thumbnail';
 
-const ItemsTemplate = ({ category, api }) => {
+interface Props {
+  category: string;
+  api: any;
+}
+
+interface ItemInfo {
+  id: string;
+  name: string;
+  title: string;
+  thumbnail: Thumbnail;
+}
+
+const ItemsTemplate = ({ category, api }: Props) => {
   const [page, setPage] = useState(1);
   const [items, loading] = useMediasPaginated(category, page, api);
   const { total, limit } = items || {};
 
-  const changePage = (e, newPage) => {
+  const changePage = (e: ChangeEvent<unknown>, newPage: number) => {
     setPage(newPage);
   };
 
@@ -25,7 +38,7 @@ const ItemsTemplate = ({ category, api }) => {
         {loading && <CustomLoader text="Loading" />}
 
         {!loading &&
-          items.results?.map(({ id, name, title, thumbnail }) => (
+          items.results?.map(({ id, name, title, thumbnail }: ItemInfo) => (
             <Link
               href={`/${category.toLowerCase()}/${name || id}`}
               passHref
