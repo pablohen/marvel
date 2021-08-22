@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import MainMenuLink from './MainMenuLink';
 
 const MainMenu = () => {
   return (
@@ -21,41 +22,10 @@ const MainMenu = () => {
 
         <div className="mx-4">
           <ul className="flex flex-col md:flex-row  space-x-0 md:space-x-2 space-y-4 md:space-y-0 text-center">
-            {/* <li className="py-4">
-              <Link href="/" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
-                  Home
-                </a>
-              </Link>
-            </li> */}
-            <li className="py-4">
-              <Link href="/characters" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
-                  Characters
-                </a>
-              </Link>
-            </li>
-            <li className="py-4">
-              <Link href="/comics" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
-                  Comics
-                </a>
-              </Link>
-            </li>
-            <li className="py-4">
-              <Link href="/events" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
-                  Events
-                </a>
-              </Link>
-            </li>
-            <li className="py-4">
-              <Link href="/series" passHref>
-                <a className="text-white font-bold p-4 rounded transform transition-all hover:bg-white hover:text-marvel-red">
-                  Series
-                </a>
-              </Link>
-            </li>
+            <MainMenuLink href="/characters" text="Characters" />
+            <MainMenuLink href="/comics" text="Comics" />
+            <MainMenuLink href="/events" text="Events" />
+            <MainMenuLink href="/series" text="Series" />
           </ul>
         </div>
       </div>
