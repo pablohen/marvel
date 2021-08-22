@@ -2,7 +2,7 @@
 
 ## Front-end:
 
-- JavaScript
+- TypeScript
 - React
 - Next.js
 - Next-SEO
