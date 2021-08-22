@@ -2,7 +2,6 @@ import MainMenu from '../../components/MainMenu';
 import marvelApi from '../../services/marvelApi';
 import Showcase from '../../components/Showcase';
 import Image from 'next/image';
-import moment from 'moment';
 import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
 import useCharacter from '../../hooks/useCharacter';
@@ -33,7 +32,7 @@ const CharacterPage = () => {
     marvelApi.getCharacterMedias
   );
 
-  const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
+  const modifiedDate = new Date(modified).toLocaleString();
 
   return (
     <div className="space-y-4">

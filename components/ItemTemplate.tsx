@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import moment from 'moment';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -24,7 +23,7 @@ const ItemTemplate = ({ api }: Props) => {
   const { id, title, description, thumbnail, modified, characters } =
     item || {};
 
-  const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
+  const modifiedDate = new Date(modified).toLocaleString();
 
   return (
     <div className="space-y-4 flex flex-col h-screen">
