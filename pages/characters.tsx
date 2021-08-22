@@ -7,7 +7,7 @@ const CharactersPage = () => {
   const category = 'Characters';
 
   return (
-    <div className="flex flex-col h-screen space-y-4">
+    <div className="flex flex-col min-h-screen space-y-4">
       <MainMenu />
 
       <ItemsTemplate category={category} api={marvelApi.getCharacters} />

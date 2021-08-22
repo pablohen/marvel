@@ -1,6 +1,10 @@
 import Loader from 'react-loader-spinner';
 
-const CustomLoader = ({ text }) => {
+interface Props {
+  text: string;
+}
+
+const CustomLoader = ({ text }: Props) => {
   return (
     <div className="flex flex-col items-center space-y-2">
       <span className="font-bold">{text}</span>

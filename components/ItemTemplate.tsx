@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import moment from 'moment';
 import { useRouter } from 'next/router';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -8,15 +7,23 @@ import Footer from './Footer';
 import CustomLoader from './CustomLoader';
 import useItem from '../hooks/useItem';
 
-const ItemTemplate = ({ api }) => {
+interface Props {
+  api: any;
+}
+
+interface CharacterInfo {
+  name: string;
+}
+
+const ItemTemplate = ({ api }: Props) => {
   const router = useRouter();
   const { itemId } = router.query;
-  const [item, loading] = useItem(itemId, api);
+  const [item, loading] = useItem(String(itemId), api);
 
   const { id, title, description, thumbnail, modified, characters } =
     item || {};
 
-  const modifiedDate = moment(modified).format('YYYY/MM/DD hh:mm:ss');
+  const modifiedDate = new Date(modified).toLocaleString();
 
   return (
     <div className="space-y-4 flex flex-col h-screen">
@@ -68,7 +75,7 @@ const ItemTemplate = ({ api }) => {
               <>
                 <h4 className="text-3xl font-bold">Characters</h4>
                 <ul>
-                  {characters?.items?.map(({ name }) => (
+                  {characters?.items?.map(({ name }: CharacterInfo) => (
                     <li key={name}>
                       <Link href={`/characters/${name}`}>
                         <a>{name}</a>

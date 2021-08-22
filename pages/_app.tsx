@@ -2,7 +2,12 @@ import '../styles/globals.css';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 
-function MyApp({ Component, pageProps }) {
+interface Props {
+  Component: any;
+  pageProps: any;
+}
+
+function MyApp({ Component, pageProps }: Props) {
   return (
     <>
       <DefaultSeo {...SEO} />
