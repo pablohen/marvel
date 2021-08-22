@@ -18,5 +18,4 @@
 
 ### TODO:
 
-- TypeScript?
 - search?
