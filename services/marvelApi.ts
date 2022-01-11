@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import md5 from 'md5';
 
 const publicApiKey = '59248caba3c4b7a1eb4d7dd379c827bd';
@@ -31,7 +31,8 @@ const getCharacters = async (id: string, page: number = 1) => {
     const apiRes = await res.data.data;
     return await apiRes;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -45,7 +46,8 @@ const getComics = async (id: string, page = 1) => {
     const apiRes = await res.data.data;
     return await apiRes;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -59,7 +61,8 @@ const getEvents = async (id: string, page = 1) => {
     const apiRes = await res.data.data;
     return await apiRes;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -73,7 +76,8 @@ const getSeries = async (id: string, page = 1) => {
     const apiRes = await res.data.data;
     return await apiRes;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -87,7 +91,8 @@ const getMedias = async (mediaType: string, page = 1) => {
     const apiRes = await res.data.data;
     return await apiRes;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -99,7 +104,8 @@ const getCharacter = async (name: string) => {
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -111,7 +117,8 @@ const getCharacterComics = async (characterId: string) => {
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -123,7 +130,8 @@ const getCharacterEvents = async (characterId: string) => {
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -135,7 +143,8 @@ const getCharacterSeries = async (characterId: string) => {
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -147,7 +156,8 @@ const getCharacterMedias = async (characterId: string, mediaType: string) => {
     const { results } = await res.data.data;
     return await results;
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -159,7 +169,8 @@ const getComic = async (comicId: string) => {
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -171,7 +182,8 @@ const getEvent = async (eventId: string) => {
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -183,7 +195,8 @@ const getSerie = async (seriesId: string) => {
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
@@ -195,7 +208,8 @@ const getMedia = async (mediaType: string, mediaId: string) => {
     const { results } = await res.data.data;
     return await results[0];
   } catch (error) {
-    console.log(error.message);
+    const axiosError = error as AxiosError;
+    console.log(axiosError.message);
   }
 };
 
