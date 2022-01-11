@@ -1,5 +1,4 @@
 import CustomLoader from '../CustomLoader';
-import Pagination from '@material-ui/lab/Pagination';
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
 import useMediasPaginated from '../../hooks/useMediasPaginated';
@@ -7,6 +6,7 @@ import useMediasPaginated from '../../hooks/useMediasPaginated';
 import ItemThumbnail from '../../interfaces/ItemThumbnail';
 import Thumbnails from './Thumbnails';
 import Title from './Title';
+import Paginator from './Paginator';
 
 interface Items {
   total: number;
@@ -23,7 +23,7 @@ const ItemsTemplate = ({ category, api }: Props) => {
   const [page, setPage] = useState(1);
   const [items, loading] = useMediasPaginated(category, page, api);
 
-  const { total, limit, results }: Items = items || {};
+  const { total, limit, results }: Items = items ?? {};
 
   const changePage = (_: any, newPage: number) => {
     setPage(newPage);
@@ -42,15 +42,11 @@ const ItemsTemplate = ({ category, api }: Props) => {
       </div>
 
       {!loading && (
-        <div className="flex justify-center">
-          <Pagination
-            count={items ? Math.ceil(total / limit) : 1}
-            onChange={changePage}
-            showFirstButton
-            showLastButton
-            page={page || 1}
-          />
-        </div>
+        <Paginator
+          count={items ? Math.ceil(total / limit) : 1}
+          onChange={changePage}
+          page={page ?? 1}
+        />
       )}
     </div>
   );
