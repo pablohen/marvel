@@ -1,5 +1,9 @@
 import axios, { AxiosError } from 'axios';
 import md5 from 'md5';
+import { Result as CharacterResult } from '../interfaces/CharacterDTO';
+import { Result as ComicResult } from '../interfaces/ComicDTO';
+import { Result as EventResult } from '../interfaces/EventDTO';
+import { Result as SerieResult } from '../interfaces/SerieDTO';
 
 const publicApiKey = '59248caba3c4b7a1eb4d7dd379c827bd';
 const privateApiKey = process.env.MARVEL_API_PRIVATE_KEY;
@@ -206,7 +210,7 @@ const getMedia = async (mediaType: string, mediaId: string) => {
       params: { ts, apikey },
     });
     const { results } = await res.data.data;
-    return await results[0];
+    return (await results[0]) as ComicResult | EventResult | SerieResult;
   } catch (error) {
     const axiosError = error as AxiosError;
     console.log(axiosError.message);
