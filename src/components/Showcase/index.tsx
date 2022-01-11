@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Thumbnail from '../interfaces/Thumbnail';
+import Thumbnail from '../../interfaces/Thumbnail';
 
 interface Info {
   id: string;

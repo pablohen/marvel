@@ -1,7 +1,10 @@
+import { NextSeoProps } from 'next-seo';
+
 const site = `https://${process.env.VERCEL_URL}`;
 const siteName = 'Marvel API';
 const description = 'Marvel API demo using React.';
-const nextSeo = {
+
+const nextSeo: NextSeoProps = {
   defaultTitle: siteName,
   titleTemplate: `%s | ${siteName}`,
   description,
