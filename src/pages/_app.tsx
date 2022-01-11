@@ -1,6 +1,6 @@
 import '../styles/globals.css';
 import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config';
+import SEO from '../../next-seo.config';
 
 interface Props {
   Component: any;
